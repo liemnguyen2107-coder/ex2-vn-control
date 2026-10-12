@@ -28,7 +28,9 @@
       var a = map[e.target.id];
       if (a) {
         a.classList.add("on");
-        a.scrollIntoView({ inline: "center", block: "nearest" });
+        // chỉ cuộn thanh chip theo chiều ngang, không đụng tới cuộn của trang
+        var nav = a.parentNode;
+        nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: "smooth" });
       }
     });
   }, { rootMargin: "-35% 0px -60% 0px" });
