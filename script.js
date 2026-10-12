@@ -1,6 +1,8 @@
 // Hiện dần các khối khi cuộn tới
 (function () {
   var items = document.querySelectorAll(".rv");
+  // chốt an toàn: sau 2,5 giây luôn hiện hết, kể cả khi trình duyệt không báo cuộn tới
+  setTimeout(function () { items.forEach(function (el) { el.classList.add("in"); }); }, 2500);
   if (!("IntersectionObserver" in window)) {
     items.forEach(function (el) { el.classList.add("in"); });
     return;
