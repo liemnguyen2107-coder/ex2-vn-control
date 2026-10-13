@@ -38,3 +38,23 @@
   }, { rootMargin: "-35% 0px -60% 0px" });
   Object.keys(map).forEach(function (id) { spy.observe(document.getElementById(id)); });
 })();
+
+
+// Thanh dock phía dưới: sáng theo mục đang xem
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll(".dock a[data-spy]"));
+  if (!links.length) return;
+  var map = {};
+  links.forEach(function (a) {
+    a.dataset.spy.split(",").forEach(function (id) { map[id] = a; });
+  });
+  var sections = document.querySelectorAll("main > section[id]");
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var a = map[e.target.id];
+      links.forEach(function (l) { l.classList.toggle("on", l === a); });
+    });
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  Array.prototype.forEach.call(sections, function (s) { spy.observe(s); });
+})();
