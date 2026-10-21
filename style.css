@@ -458,3 +458,27 @@ button.pimg { border: 0; padding: 0; cursor: zoom-in; font: inherit; color: inhe
 .dock a.zalo:hover { background: rgba(255,255,255,.07); color: #fff; }
 .dock a.on { background: linear-gradient(135deg, #4f8ff7, #2f6fe4); color: #fff; box-shadow: 0 8px 20px -8px rgba(59,130,246,.9); }
 .dock a { position: relative; }
+
+
+/* ================= XC Connect ================= */
+.xc-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.xc-brand img { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
+.xc-brand b { display: block; font-size: 22px; letter-spacing: -.3px; }
+.xc-brand small { color: var(--muted); font-size: 13px; }
+.phone {
+  margin: 0 auto; width: min(290px, 100%); padding: 8px; border-radius: 42px; background: #000;
+  border: 1px solid rgba(255,255,255,.2); box-shadow: 0 40px 80px -30px rgba(59,130,246,.5), 0 0 0 5px rgba(255,255,255,.03);
+}
+.phone img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 2; object-fit: cover; border-radius: 34px; }
+.phone-box { display: grid; place-items: center; padding: 34px 20px; }
+.phones { position: relative; display: flex; justify-content: center; gap: 0; min-height: 0; }
+.phones .phone { width: min(250px, 46%); }
+.phones .phone.p2 { margin: 56px 0 0 -26px; transform: rotate(4deg); }
+.phones .phone:first-child { transform: rotate(-3deg); }
+.phones2 { align-items: start; }
+.phones2 .cap { margin-top: 16px; }
+.teaser-phones { display: flex; justify-content: center; }
+@media (max-width: 920px) { .phones .phone { width: min(220px, 44%); } .phone-box { padding: 24px 14px; } }
+@media (max-width: 560px) { .phones .phone.p2 { margin-top: 36px; } }
+.js .phones.rv.in { transform: none; }
+.phones2 .gfx + .gfx { margin-top: 0; }

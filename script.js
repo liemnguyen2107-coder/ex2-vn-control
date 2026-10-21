@@ -28,6 +28,7 @@
       if (!e.isIntersecting) return;
       links.forEach(function (a) { a.classList.remove("on"); });
       var a = map[e.target.id];
+      if (!a) return;
       if (a) {
         a.classList.add("on");
         // chỉ cuộn thanh chip theo chiều ngang, không đụng tới cuộn của trang
@@ -36,7 +37,7 @@
       }
     });
   }, { rootMargin: "-35% 0px -60% 0px" });
-  Object.keys(map).forEach(function (id) { spy.observe(document.getElementById(id)); });
+  Array.prototype.forEach.call(document.querySelectorAll("main > section[id]"), function (s) { spy.observe(s); });
 })();
 
 
