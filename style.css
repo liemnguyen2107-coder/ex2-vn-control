@@ -482,3 +482,52 @@ button.pimg { border: 0; padding: 0; cursor: zoom-in; font: inherit; color: inhe
 @media (max-width: 560px) { .phones .phone.p2 { margin-top: 36px; } }
 .js .phones.rv.in { transform: none; }
 .phones2 .gfx + .gfx { margin-top: 0; }
+
+
+/* ================= XC Connect: widget, thẻ sạc, thông báo ================= */
+.wd-wrap { display: grid; grid-template-columns: 130px 1fr; gap: 12px; margin-bottom: 14px; }
+.wd { border-radius: 22px; padding: 14px 16px; background: linear-gradient(160deg, #15233f, #0b1424); border: 1px solid rgba(255,255,255,.1); }
+.wd small { display: block; color: var(--muted); font-size: 11px; font-weight: 600; }
+.wd b { display: block; font-size: 34px; line-height: 1.1; letter-spacing: -1px; margin: 6px 0 2px; }
+.wd b i { font-style: normal; font-size: 16px; color: var(--muted); font-weight: 600; margin-left: 2px; }
+.wd span { color: #cfe0ff; font-size: 12px; font-weight: 600; }
+.wd-bar { height: 6px; border-radius: 3px; background: #1d2a47; margin-top: 12px; overflow: hidden; }
+.wd-bar u { display: block; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #2dd4bf, #3b82f6); }
+.wd-med { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.wd-ac { display: grid; justify-items: center; gap: 6px; padding: 12px 14px; border-radius: 18px; background: rgba(59,130,246,.18); border: 1px solid rgba(96,165,250,.4); }
+.wd-ac svg, .ctl svg { width: 24px; height: 24px; stroke: #60a5fa; fill: none; stroke-width: 1.8; stroke-linecap: round; }
+.wd-ac em { font-style: normal; font-size: 11px; font-weight: 700; color: #cfe0ff; }
+.live { border-radius: 24px; padding: 16px 18px; background: #05080f; border: 1px solid rgba(255,255,255,.12); margin-bottom: 14px; }
+.live-h { display: flex; align-items: center; gap: 12px; }
+.live-h b { display: block; font-size: 15px; }
+.live-h small { color: var(--muted); font-size: 12px; }
+.live-h strong { margin-left: auto; font-size: 26px; color: var(--teal); letter-spacing: -.5px; }
+.live-ic { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: rgba(45,212,191,.16); }
+.live-ic svg { width: 20px; height: 20px; fill: #2dd4bf; }
+.live-bar { position: relative; height: 8px; border-radius: 4px; background: #1d2a47; margin: 14px 0 10px; overflow: visible; }
+.live-bar u { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, #2dd4bf, #3b82f6); }
+.live-bar s { position: absolute; top: -4px; width: 3px; height: 16px; border-radius: 2px; background: #fbbf24; }
+.live-f { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; color: var(--muted); flex-wrap: wrap; }
+.lockrow { display: flex; align-items: center; gap: 12px; justify-content: space-between; }
+.ring { position: relative; width: 62px; height: 62px; flex: none; border-radius: 50%; background: rgba(255,255,255,.07); display: grid; place-items: center; }
+.ring svg { position: absolute; inset: 6px; width: 50px; height: 50px; }
+.ring b { position: relative; font-size: 15px; }
+.rect { flex: 1; border-radius: 16px; padding: 10px 14px; background: rgba(255,255,255,.07); }
+.rect b { display: block; font-size: 14px; }
+.rect small { color: var(--muted); font-size: 12px; }
+.ctl { flex: none; width: 62px; height: 62px; border-radius: 50%; background: rgba(255,255,255,.07); display: grid; place-items: center; align-content: center; gap: 1px; }
+.ctl small { font-size: 9.5px; color: #cfe0ff; font-weight: 700; }
+.notis { gap: 14px; }
+.noti {
+  display: flex; gap: 14px; align-items: flex-start; padding: 18px; border-radius: 22px;
+  background: linear-gradient(180deg, rgba(22,34,60,.78), rgba(12,20,38,.78)); border: 1px solid var(--line);
+}
+.noti b { display: block; font-size: 15.5px; margin-bottom: 3px; }
+.noti small { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+.ni { flex: none; width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center; background: rgba(59,130,246,.16); }
+.ni svg { width: 21px; height: 21px; fill: none; stroke: #60a5fa; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ni.ok { background: rgba(45,212,191,.16); } .ni.ok svg { stroke: #2dd4bf; }
+.ni.warn { background: rgba(251,191,36,.14); } .ni.warn svg { stroke: #fbbf24; }
+.ni.bad { background: rgba(239,68,68,.14); } .ni.bad svg { stroke: #f87171; }
+.g4 .ico { margin-bottom: 4px; }
+@media (max-width: 560px) { .wd-wrap { grid-template-columns: 1fr; } }

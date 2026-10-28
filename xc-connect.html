@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script>document.documentElement.className+=" js"</script>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -36,6 +36,9 @@
       <a href="#xc-dieu-khien">Điều khiển</a>
       <a href="#xc-hanh-trinh">Hành trình</a>
       <a href="#xc-xe-o-dau">Xe ở đâu</a>
+      <a href="#xc-widget">Widget</a>
+      <a href="#xc-thong-bao">Thông báo</a>
+      <a href="#xc-tien-ich">Tiện ích</a>
       <a href="#xc-ghep">Cách ghép</a>
       <a href="#xc-hoi-dap">Hỏi đáp</a>
     </nav>
@@ -55,11 +58,27 @@
         <a class="btn primary" href="https://zalo.me/g/duikjiadpf81hpdi1r5x" target="_blank" rel="noopener">💬 Nhận app qua Zalo</a>
         <a class="btn ghost" href="#xc-xem">Xem tính năng</a>
       </div>
-      <div class="status" aria-hidden="true"><span>iPhone</span><span>Android</span><span class="g">Tiếng Việt</span><span class="g">Có chế độ xem thử</span></div>
+      <div class="status" aria-hidden="true"><span>iPhone</span><span>Android</span><span class="g">Bản 1.0.4</span><span class="g">Có chế độ xem thử</span></div>
     </div>
     <div class="phones rv">
       <figure class="phone"><img src="assets/xc/xe.jpg" alt="Màn hình Xe của XC Connect: pin, quãng đường, trạng thái khóa, bản đồ" width="1000" height="2000"></figure>
       <figure class="phone p2"><img src="assets/xc/dieu-hoa.jpg" alt="Màn hình Điều hòa của XC Connect" width="1000" height="2000"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- CÓ GÌ MỚI -->
+<section id="xc-moi">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Có gì mới · Bản 1.0.4</span>
+      <h2>Những điểm mới trong các bản gần đây</h2>
+    </div>
+    <div class="grid g4">
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="15" height="10" rx="2"/><path d="M21 11v2M9 10l-2 4h4l-2 4"/></svg></div><h3>Thẻ sạc trên màn hình khóa</h3><p>Theo dõi lần sạc ngay trên màn hình khóa iPhone, tự cập nhật cả khi bạn đã đóng app.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 8-3 8h18s-3-1-3-8M10 20a2 2 0 004 0"/></svg></div><h3>Thông báo gọi tên bạn</h3><p>Xe nhắn đúng tên bạn đã đặt, ví dụ “Xe đã sạc xong, Anh Minh ơi”. Bật tắt từng loại thông báo.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div><h3>Gửi điểm đến ổn định hơn</h3><p>Điện thoại tự đọc link Google Maps rồi gửi tọa độ, nên xe nhận được cả khi đang chạy, sóng yếu.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg></div><h3>Chọn Apple Maps hoặc Google Maps</h3><p>Trên iPhone, “Chỉ đường tới xe” cho bạn chọn mở bằng Apple Maps hay Google Maps.</p></div>
     </div>
   </div>
 </section>
@@ -169,8 +188,123 @@
   </div>
 </section>
 
+<!-- WIDGET & THẺ SẠC -->
+<section id="xc-widget">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Widget &amp; thẻ sạc</span>
+      <h2>Xem xe mà không cần mở app</h2>
+      <p class="sub">Pin, quãng đường và điều hòa ngay trên màn hình chính, màn hình khóa và Trung tâm điều khiển.</p>
+    </div>
+    <div class="row">
+      <div class="gfx rv">
+        <div class="wd-wrap">
+          <div class="wd wd-small">
+            <small>Xe của bạn</small>
+            <b>78<i>%</i></b>
+            <span>246 km</span>
+            <div class="wd-bar"><u style="width:78%"></u></div>
+          </div>
+          <div class="wd wd-med">
+            <div><small>Xe của bạn · Đỗ</small><b>246<i> km</i></b><span>78% pin · giới hạn sạc 90%</span></div>
+            <div class="wd-ac"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><em>Điều hòa</em></div>
+          </div>
+        </div>
+        <div class="live">
+          <div class="live-h"><span class="live-ic"><svg viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span><div><b>Đang sạc AC</b><small>Thẻ trên màn hình khóa</small></div><strong>62%</strong></div>
+          <div class="live-bar"><u style="width:62%"></u><s style="left:90%"></s></div>
+          <div class="live-f"><span>Giới hạn sạc 90%</span><span>Tự cập nhật khi app đóng</span></div>
+        </div>
+        <div class="lockrow">
+          <div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#26385f" stroke-width="3.5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#2dd4bf" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="73.5 94.2" transform="rotate(-90 18 18)"/></svg><b>78</b></div>
+          <div class="rect"><b>Pin xe 78%</b><small>Còn đi 246 km</small></div>
+          <div class="ctl"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><small>Điều hòa</small></div>
+        </div>
+      </div>
+      <div class="copy rv">
+        <h3>Widget, thẻ sạc và nút điều hòa</h3>
+        <ul class="ticks">
+          <li><b>Widget màn hình chính:</b> pin, quãng đường và điều hòa, chọn kiểu hiển thị bạn thích (iPhone cỡ nhỏ và vừa)</li>
+          <li><b>Widget màn hình khóa:</b> pin và quãng đường ngay khi nhìn vào điện thoại</li>
+          <li><b>Thẻ “Đang sạc” (Live Activity):</b> theo dõi lần sạc trên màn hình khóa, tự mở khi bắt đầu sạc và tự cập nhật cả khi bạn đã đóng app</li>
+          <li><b>Nút điều hòa ở Trung tâm điều khiển:</b> bật, tắt điều hòa xe chỉ bằng một chạm (iPhone)</li>
+          <li><b>Android:</b> widget điều hòa và trạng thái xe trên màn hình chính</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THÔNG BÁO -->
+<section id="xc-thong-bao" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Thông báo</span>
+      <h2>Xe tự nhắn bạn khi cần</h2>
+      <p class="sub">Sáu loại thông báo, bật hay tắt từng loại riêng cho điện thoại của bạn. Lựa chọn được lưu nên đổi máy vẫn còn.</p>
+    </div>
+    <div class="grid g3 notis">
+      <div class="noti rv"><span class="ni"><svg viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span><div><b>Bắt đầu sạc</b><small>Khi cắm súng sạc và xe bắt đầu nhận điện.</small></div></div>
+      <div class="noti rv"><span class="ni ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.500"/></svg></span><div><b>Sạc xong</b><small>Pin tới giới hạn sạc, súng vẫn đang cắm. Kèm lời gọi tên bạn.</small></div></div>
+      <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><path d="M12 8v5M12 16.5v.5M10.3 3.900L2.500 18a2 2 0 001.700 3h15.600a2 2 0 001.700-3L13.700 3.900a2 2 0 00-3.400 0z"/></svg></span><div><b>Sạc bị ngắt</b><small>Xe ngừng nhận điện khi pin chưa tới giới hạn (trụ lỗi, tuột súng…).</small></div></div>
+      <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><path d="M12 3v8M6.300 6.300a8 8 0 1011.400 0"/></svg></span><div><b>Quên tắt xe</b><small>Xe vẫn bật ở số P 15 phút sau khi có người xuống. Không báo khi đang sạc hoặc ở chế độ cắm trại.</small></div></div>
+      <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 017.500-2"/></svg></span><div><b>Quên khóa xe</b><small>Đã tắt máy 3 phút mà cửa chưa khóa. Nhớ khóa xe bằng chìa.</small></div></div>
+      <div class="noti rv"><span class="ni bad"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="17" height="9" rx="2"/><path d="M22 11v3M7 11v3"/></svg></span><div><b>Pin yếu</b><small>Pin xuống 15% khi không cắm sạc.</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIỆN ÍCH KHÁC -->
+<section id="xc-tien-ich">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Tiện ích khác</span>
+      <h2>Những việc nhỏ làm mỗi ngày dễ hơn</h2>
+    </div>
+    <div class="row">
+      <div class="gfx rv">
+        <svg viewBox="0 0 460 250" role="img" aria-label="Chia sẻ địa điểm từ Google Maps sang XC Connect, màn hình xe mở dẫn đường">
+          <rect x="14" y="30" width="116" height="190" rx="18" fill="#101a2e" stroke="#60a5fa" stroke-width="2"/>
+          <rect x="24" y="44" width="96" height="84" rx="8" fill="#0f1c33"/>
+          <path d="M30 110 L58 86 L84 96 L110 64" fill="none" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M110 48a8 8 0 018 8c0 6-8 14-8 14s-8-8-8-14a8 8 0 018-8z" fill="#ef4444"/>
+          <rect x="24" y="138" width="96" height="10" rx="5" fill="#26385f"/><rect x="24" y="154" width="64" height="8" rx="4" fill="#1d2a47"/>
+          <rect x="24" y="176" width="96" height="30" rx="10" fill="#2f6fe4"/><text x="72" y="196" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Inter, sans-serif">Chia sẻ</text>
+          <path d="M138 125 H198" class="flow" fill="none" stroke="#60a5fa" stroke-width="2.5"/><path d="M194 117l10 8-10 8" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="206" y="64" width="110" height="122" rx="14" fill="#10192d" stroke="#26385f" stroke-width="2"/>
+          <rect x="220" y="82" width="26" height="26" rx="7" fill="#0b1324" stroke="#26385f"/><text x="233" y="100" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="Inter, sans-serif">XC</text><circle cx="242" cy="86" r="3" fill="#2dd4bf"/>
+          <text x="254" y="100" font-size="11" font-weight="700" fill="#fff" font-family="Inter, sans-serif">XC Connect</text>
+          <rect x="220" y="122" width="82" height="8" rx="4" fill="#26385f"/><rect x="220" y="140" width="62" height="8" rx="4" fill="#1d2a47"/><rect x="220" y="158" width="72" height="8" rx="4" fill="#1d2a47"/>
+          <path d="M322 125 H364" class="flow" fill="none" stroke="#2dd4bf" stroke-width="2.5"/><path d="M360 117l10 8-10 8" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="376" y="60" width="76" height="130" rx="10" fill="#060b16" stroke="#26385f" stroke-width="2"/>
+          <rect x="382" y="68" width="64" height="62" rx="6" fill="#0f1c33"/><path d="M388 122 L408 100 L428 108 L440 82" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="440" cy="80" r="4" fill="#ef4444"/>
+          <rect x="382" y="140" width="64" height="18" rx="9" fill="#2dd4bf"/><text x="414" y="152.500" text-anchor="middle" font-size="8.500" font-weight="800" fill="#04211d" font-family="Inter, sans-serif">Dẫn đường</text>
+          <text x="72" y="238" text-anchor="middle" font-size="10" fill="#92a0bd" font-family="Inter, sans-serif">Google Maps</text><text x="261" y="206" text-anchor="middle" font-size="10" fill="#92a0bd" font-family="Inter, sans-serif">Chọn XC Connect</text><text x="414" y="212" text-anchor="middle" font-size="10" fill="#92a0bd" font-family="Inter, sans-serif">Màn hình xe</text>
+        </svg>
+      </div>
+      <div class="copy rv">
+        <h3>Gửi điểm đến từ Google Maps</h3>
+        <p>Trong Google Maps chọn địa điểm, bấm Chia sẻ, chọn XC Connect. Màn hình xe mở bản đồ với địa điểm đó, bạn chỉ cần bấm Dẫn đường.</p>
+        <ul class="ticks">
+          <li>Điện thoại tự đọc link rút gọn rồi gửi tọa độ cho xe, nên vẫn gửi được khi xe đang chạy, sóng yếu</li>
+          <li>Nếu không đọc được, app gửi link gốc kèm tên địa điểm để xe tìm theo tên</li>
+          <li>Có cả ở ô “Gửi điểm đến” ngay trong app: dán link hoặc nhập tên nơi đến</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid g3" style="margin-top:56px">
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></div><h3>Ra lệnh bằng Siri</h3><p>Nói “Turn on AC in XC Connect” để bật điều hòa. Mở app Phím tắt để xem mọi lệnh hoặc gán vào nút Tác vụ của iPhone.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0M17 8a3 3 0 010 6M21 20a5 5 0 00-4-4.900"/></svg></div><h3>Cho người nhà dùng chung</h3><p>Trên màn hình xe mở App điện thoại, bấm Ghép điện thoại. Người nhà quét mã bằng XC Connect, bạn bấm Đồng ý trên xe.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4.500V3M12 21v-1.500M4.500 12H3M21 12h-1.500M6.300 6.300L5.200 5.200M18.800 18.800l-1.100-1.100M6.300 17.700l-1.100 1.100M18.800 5.200l-1.100 1.100"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Giao diện sáng và tối</h3><p>Theo chế độ của điện thoại. Lời chào đúng tên bạn, đổi lại bất cứ lúc nào trong Cài đặt.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div><h3>Giới hạn sạc ngay trong app</h3><p>Đặt giới hạn sạc từ điện thoại và xem xe đang sạc tới đâu.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg></div><h3>Chỉ đường tới xe</h3><p>Trên iPhone chọn mở bằng Apple Maps hoặc Google Maps. Trên Android mở thẳng Google Maps.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg></div><h3>Xem thử không cần xe</h3><p>Chưa có xe ghép vẫn mở chế độ xem thử với xe mẫu để làm quen giao diện.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- CÁCH GHÉP -->
-<section id="xc-ghep">
+<section id="xc-ghep" class="alt">
   <div class="wrap">
     <div class="head">
       <span class="kicker">Cách ghép</span>
@@ -183,7 +317,7 @@
       <div class="card rv"><span class="step-n">BƯỚC 3</span><h3>Điều khiển từ xa</h3><p>Xong. Từ giờ xem và điều khiển xe ở bất cứ đâu có mạng.</p></div>
     </div>
     <div class="grid g3" style="margin-top:16px">
-      <div class="card rv"><h3>Xem thử không cần xe</h3><p>Chưa ghép xe vẫn mở được chế độ xem thử với xe mẫu để làm quen giao diện.</p></div>
+      <div class="card rv"><h3>Ghép an toàn</h3><p>Mỗi điện thoại ghép đều cần bạn bấm Đồng ý trên màn hình xe.</p></div>
       <div class="card rv"><h3>Bảo mật</h3><p>Mỗi lệnh được ký bằng khóa riêng lưu an toàn trong điện thoại. Xe chỉ nhận lệnh từ điện thoại đã ghép.</p></div>
       <div class="card rv"><h3>Cập nhật dễ</h3><p>Có bản mới, app báo ngay trên màn hình để bạn cập nhật.</p></div>
     </div>
@@ -191,7 +325,7 @@
 </section>
 
 <!-- HỎI ĐÁP -->
-<section id="xc-hoi-dap" class="alt">
+<section id="xc-hoi-dap">
   <div class="wrap" style="max-width:820px">
     <div class="head">
       <span class="kicker">Hỏi đáp</span>
@@ -244,12 +378,12 @@
 
 <nav class="dock" aria-label="Điều hướng nhanh">
   <a href="index.html"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg><span>Ứng dụng</span></a>
-  <a href="#xc-xem" data-spy="xc-hero,xc-xem,xc-dieu-hoa,xc-dieu-khien,xc-hanh-trinh,xc-xe-o-dau"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg><span>Tính năng</span></a>
+  <a href="#xc-xem" data-spy="xc-hero,xc-moi,xc-xem,xc-dieu-hoa,xc-dieu-khien,xc-hanh-trinh,xc-xe-o-dau,xc-widget,xc-thong-bao,xc-tien-ich"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg><span>Tính năng</span></a>
   <a href="#xc-ghep" data-spy="xc-ghep,xc-hoi-dap"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h3v3h-3zM20 14v6h-3"/></svg><span>Cách ghép</span></a>
   <a href="phu-kien.html"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 016 0"/></svg><span>Phụ kiện</span></a>
   <a class="zalo" href="https://zalo.me/g/duikjiadpf81hpdi1r5x" target="_blank" rel="noopener" data-spy="lien-he"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><span>Zalo</span></a>
 </nav>
 
-<script src="script.js?v=8"></script>
+<script src="script.js?v=9"></script>
 </body>
 </html>
