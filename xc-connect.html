@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script>document.documentElement.className+=" js"</script>
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
@@ -197,30 +197,7 @@
       <p class="sub">Pin, quãng đường và điều hòa ngay trên màn hình chính, màn hình khóa và Trung tâm điều khiển.</p>
     </div>
     <div class="row">
-      <div class="gfx rv">
-        <div class="wd-wrap">
-          <div class="wd wd-small">
-            <small>Xe của bạn</small>
-            <b>78<i>%</i></b>
-            <span>246 km</span>
-            <div class="wd-bar"><u style="width:78%"></u></div>
-          </div>
-          <div class="wd wd-med">
-            <div><small>Xe của bạn · Đỗ</small><b>246<i> km</i></b><span>78% pin · giới hạn sạc 90%</span></div>
-            <div class="wd-ac"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><em>Điều hòa</em></div>
-          </div>
-        </div>
-        <div class="live">
-          <div class="live-h"><span class="live-ic"><svg viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span><div><b>Đang sạc AC</b><small>Thẻ trên màn hình khóa</small></div><strong>62%</strong></div>
-          <div class="live-bar"><u style="width:62%"></u><s style="left:90%"></s></div>
-          <div class="live-f"><span>Giới hạn sạc 90%</span><span>Tự cập nhật khi app đóng</span></div>
-        </div>
-        <div class="lockrow">
-          <div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#26385f" stroke-width="3.5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#2dd4bf" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="73.5 94.2" transform="rotate(-90 18 18)"/></svg><b>78</b></div>
-          <div class="rect"><b>Pin xe 78%</b><small>Còn đi 246 km</small></div>
-          <div class="ctl"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><small>Điều hòa</small></div>
-        </div>
-      </div>
+      <div class="gfx rv phone-box"><figure class="phone real"><img src="assets/xc/real/home-widgets.jpg" alt="Màn hình chính iPhone có hai widget XC Connect: vòng pin 246 km 78% và thanh pin kèm trạng thái khóa, điều hòa, nhiệt độ, vị trí" loading="lazy" width="660" height="1434"></figure><p class="cap">Widget cỡ nhỏ và cỡ vừa trên màn hình chính iPhone</p></div>
       <div class="copy rv">
         <h3>Widget, thẻ sạc và nút điều hòa</h3>
         <ul class="ticks">
@@ -231,6 +208,18 @@
           <li><b>Android:</b> widget điều hòa và trạng thái xe trên màn hình chính</li>
         </ul>
       </div>
+    </div>
+    <div class="shots3">
+      <figure class="rv"><div class="shot"><img src="assets/xc/real/lock-widgets.jpg" alt="Widget màn hình khóa iPhone: 246 km, 78%, đã khóa, điều hòa tắt, và vòng tròn 78" loading="lazy" width="900" height="469"></div><p class="cap">Widget màn hình khóa: dạng chữ nhật và dạng vòng tròn</p></figure>
+      <figure class="rv"><div class="shot"><img src="assets/xc/real/android-widgets.jpg" alt="Hai widget XC Connect trên màn hình chính Android: pin 246 km, nút bật điều hòa 24 độ" loading="lazy" width="600" height="1032"></div><p class="cap">Widget trên màn hình chính Android, có nút bật điều hòa</p></figure>
+      <figure class="rv">
+        <div class="live">
+          <div class="live-h"><span class="live-ic"><svg viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span><div><b>Đang sạc AC</b><small>Thẻ trên màn hình khóa</small></div><strong>62%</strong></div>
+          <div class="live-bar"><u style="width:62%"></u><s style="left:90%"></s></div>
+          <div class="live-f"><span>Giới hạn sạc 90%</span><span>Tự cập nhật khi app đóng</span></div>
+        </div>
+        <p class="cap">Thẻ “Đang sạc” trên màn hình khóa <span class="tag-demo">hình minh họa</span></p>
+      </figure>
     </div>
   </div>
 </section>
@@ -243,13 +232,27 @@
       <h2>Xe tự nhắn bạn khi cần</h2>
       <p class="sub">Sáu loại thông báo, bật hay tắt từng loại riêng cho điện thoại của bạn. Lựa chọn được lưu nên đổi máy vẫn còn.</p>
     </div>
-    <div class="grid g3 notis">
-      <div class="noti rv"><span class="ni"><svg viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span><div><b>Bắt đầu sạc</b><small>Khi cắm súng sạc và xe bắt đầu nhận điện.</small></div></div>
-      <div class="noti rv"><span class="ni ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.500"/></svg></span><div><b>Sạc xong</b><small>Pin tới giới hạn sạc, súng vẫn đang cắm. Kèm lời gọi tên bạn.</small></div></div>
-      <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><path d="M12 8v5M12 16.5v.5M10.3 3.900L2.500 18a2 2 0 001.700 3h15.600a2 2 0 001.700-3L13.700 3.900a2 2 0 00-3.400 0z"/></svg></span><div><b>Sạc bị ngắt</b><small>Xe ngừng nhận điện khi pin chưa tới giới hạn (trụ lỗi, tuột súng…).</small></div></div>
-      <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><path d="M12 3v8M6.300 6.300a8 8 0 1011.400 0"/></svg></span><div><b>Quên tắt xe</b><small>Xe vẫn bật ở số P 15 phút sau khi có người xuống. Không báo khi đang sạc hoặc ở chế độ cắm trại.</small></div></div>
-      <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 017.500-2"/></svg></span><div><b>Quên khóa xe</b><small>Đã tắt máy 3 phút mà cửa chưa khóa. Nhớ khóa xe bằng chìa.</small></div></div>
-      <div class="noti rv"><span class="ni bad"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="17" height="9" rx="2"/><path d="M22 11v3M7 11v3"/></svg></span><div><b>Pin yếu</b><small>Pin xuống 15% khi không cắm sạc.</small></div></div>
+    <div class="row">
+      <div class="shots rv">
+        <figure class="shot"><img src="assets/xc/real/notif-stack.jpg" alt="Thông báo XC Connect trên màn hình khóa iPhone: bắt đầu sạc, sạc xong kèm tiền điện và kWh, sạc bị ngắt, xe vẫn đang bật, xe chưa khóa" loading="lazy" width="760" height="940"></figure>
+        <figure class="shot"><img src="assets/xc/real/notif-low.jpg" alt="Thông báo Pin yếu: pin còn 15%, khoảng 48 km, nhớ sạc xe" loading="lazy" width="760" height="139"></figure>
+        <p class="cap">Thông báo thật trên iPhone, gọi đúng tên bạn đã đặt</p>
+      </div>
+      <div class="notis col">
+        <div class="noti rv"><span class="ni"><svg viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span><div><b>Bắt đầu sạc</b><small>Khi cắm súng sạc và xe bắt đầu nhận điện.</small></div></div>
+        <div class="noti rv"><span class="ni ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.500"/></svg></span><div><b>Sạc xong</b><small>Pin tới giới hạn sạc, súng vẫn đang cắm. Kèm tiền điện, số kWh và thời gian sạc.</small></div></div>
+        <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><path d="M12 8v5M12 16.5v.5M10.3 3.900L2.500 18a2 2 0 001.700 3h15.600a2 2 0 001.700-3L13.700 3.900a2 2 0 00-3.400 0z"/></svg></span><div><b>Sạc bị ngắt</b><small>Xe ngừng nhận điện khi pin chưa tới giới hạn (trụ lỗi, tuột súng…).</small></div></div>
+        <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><path d="M12 3v8M6.300 6.300a8 8 0 1011.400 0"/></svg></span><div><b>Quên tắt xe</b><small>Xe vẫn bật ở số P 15 phút sau khi có người xuống. Không báo khi đang sạc hoặc ở chế độ cắm trại.</small></div></div>
+        <div class="noti rv"><span class="ni warn"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 017.500-2"/></svg></span><div><b>Quên khóa xe</b><small>Đã tắt máy 3 phút mà cửa chưa khóa. Nhớ khóa xe bằng chìa.</small></div></div>
+        <div class="noti rv"><span class="ni bad"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="17" height="9" rx="2"/><path d="M22 11v3M7 11v3"/></svg></span><div><b>Pin yếu</b><small>Pin xuống 15% khi không cắm sạc.</small></div></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="copy rv">
+        <h3>Chọn thông báo nào bạn muốn nhận</h3>
+        <p>Mỗi loại có một công tắc riêng. Cài đặt này áp dụng cho điện thoại đang dùng, người nhà dùng chung có thể chọn khác.</p>
+      </div>
+      <div class="gfx rv phone-box"><figure class="phone real"><img src="assets/xc/real/notif-settings.jpg" alt="Màn hình Thông báo: sáu công tắc bật tắt từng loại thông báo" loading="lazy" width="660" height="1434"></figure></div>
     </div>
   </div>
 </section>
@@ -262,41 +265,47 @@
       <h2>Những việc nhỏ làm mỗi ngày dễ hơn</h2>
     </div>
     <div class="row">
-      <div class="gfx rv">
-        <svg viewBox="0 0 460 250" role="img" aria-label="Chia sẻ địa điểm từ Google Maps sang XC Connect, màn hình xe mở dẫn đường">
-          <rect x="14" y="30" width="116" height="190" rx="18" fill="#101a2e" stroke="#60a5fa" stroke-width="2"/>
-          <rect x="24" y="44" width="96" height="84" rx="8" fill="#0f1c33"/>
-          <path d="M30 110 L58 86 L84 96 L110 64" fill="none" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M110 48a8 8 0 018 8c0 6-8 14-8 14s-8-8-8-14a8 8 0 018-8z" fill="#ef4444"/>
-          <rect x="24" y="138" width="96" height="10" rx="5" fill="#26385f"/><rect x="24" y="154" width="64" height="8" rx="4" fill="#1d2a47"/>
-          <rect x="24" y="176" width="96" height="30" rx="10" fill="#2f6fe4"/><text x="72" y="196" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Inter, sans-serif">Chia sẻ</text>
-          <path d="M138 125 H198" class="flow" fill="none" stroke="#60a5fa" stroke-width="2.5"/><path d="M194 117l10 8-10 8" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
-          <rect x="206" y="64" width="110" height="122" rx="14" fill="#10192d" stroke="#26385f" stroke-width="2"/>
-          <rect x="220" y="82" width="26" height="26" rx="7" fill="#0b1324" stroke="#26385f"/><text x="233" y="100" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="Inter, sans-serif">XC</text><circle cx="242" cy="86" r="3" fill="#2dd4bf"/>
-          <text x="254" y="100" font-size="11" font-weight="700" fill="#fff" font-family="Inter, sans-serif">XC Connect</text>
-          <rect x="220" y="122" width="82" height="8" rx="4" fill="#26385f"/><rect x="220" y="140" width="62" height="8" rx="4" fill="#1d2a47"/><rect x="220" y="158" width="72" height="8" rx="4" fill="#1d2a47"/>
-          <path d="M322 125 H364" class="flow" fill="none" stroke="#2dd4bf" stroke-width="2.5"/><path d="M360 117l10 8-10 8" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
-          <rect x="376" y="60" width="76" height="130" rx="10" fill="#060b16" stroke="#26385f" stroke-width="2"/>
-          <rect x="382" y="68" width="64" height="62" rx="6" fill="#0f1c33"/><path d="M388 122 L408 100 L428 108 L440 82" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="440" cy="80" r="4" fill="#ef4444"/>
-          <rect x="382" y="140" width="64" height="18" rx="9" fill="#2dd4bf"/><text x="414" y="152.500" text-anchor="middle" font-size="8.500" font-weight="800" fill="#04211d" font-family="Inter, sans-serif">Dẫn đường</text>
-          <text x="72" y="238" text-anchor="middle" font-size="10" fill="#92a0bd" font-family="Inter, sans-serif">Google Maps</text><text x="261" y="206" text-anchor="middle" font-size="10" fill="#92a0bd" font-family="Inter, sans-serif">Chọn XC Connect</text><text x="414" y="212" text-anchor="middle" font-size="10" fill="#92a0bd" font-family="Inter, sans-serif">Màn hình xe</text>
-        </svg>
-      </div>
+      <div class="gfx rv phone-box"><figure class="phone real"><img src="assets/xc/real/send-place.jpg" alt="Tab Điều khiển có ô Link Google Maps hoặc tên nơi đến và nút Gửi" loading="lazy" width="660" height="1434"></figure></div>
       <div class="copy rv">
+        <span class="kicker">Gửi điểm đến</span>
         <h3>Gửi điểm đến từ Google Maps</h3>
-        <p>Trong Google Maps chọn địa điểm, bấm Chia sẻ, chọn XC Connect. Màn hình xe mở bản đồ với địa điểm đó, bạn chỉ cần bấm Dẫn đường.</p>
+        <p>Trong Google Maps chọn địa điểm, bấm Chia sẻ, chọn XC Connect. App mở ra và gửi địa điểm sang xe, màn hình xe mở bản đồ để bạn bấm Dẫn đường.</p>
         <ul class="ticks">
           <li>Điện thoại tự đọc link rút gọn rồi gửi tọa độ cho xe, nên vẫn gửi được khi xe đang chạy, sóng yếu</li>
           <li>Nếu không đọc được, app gửi link gốc kèm tên địa điểm để xe tìm theo tên</li>
-          <li>Có cả ở ô “Gửi điểm đến” ngay trong app: dán link hoặc nhập tên nơi đến</li>
+          <li>Có cả ô “Link Google Maps hoặc tên nơi đến” ngay trong tab Điều khiển</li>
         </ul>
       </div>
     </div>
-    <div class="grid g3" style="margin-top:56px">
+    <div class="row rev">
+      <div class="copy rv">
+        <span class="kicker">Sạc</span>
+        <h3>Giới hạn sạc ngay trong app</h3>
+        <p>Chạm vào “Giới hạn sạc” trên màn hình chính để đặt mức pin xe sẽ dừng sạc.</p>
+        <ul class="ticks">
+          <li>Kéo thanh từ 50% đến 100%, hoặc chọn nhanh 80% khuyên dùng, 90% cân bằng, 100% đi xa</li>
+          <li>Hiện luôn quãng đường đi được khi sạc tới mức đó</li>
+          <li>Xe nhận lệnh ngay cả khi đang sạc</li>
+        </ul>
+      </div>
+      <div class="gfx rv phone-box"><figure class="phone real"><img src="assets/xc/real/limit.jpg" alt="Bảng Giới hạn sạc: 90%, sạc đầy tới mức này đi được khoảng 284 km, ba mức nhanh 80, 90, 100 phần trăm" loading="lazy" width="660" height="1434"></figure></div>
+    </div>
+    <div class="row">
+      <div class="gfx rv plain phones2 pair">
+        <div class="grid g2 phones2">
+          <div class="phone-box"><figure class="phone real"><img src="assets/xc/real/home-light.jpg" alt="Màn hình chính giao diện sáng, lời chào đúng tên người dùng" loading="lazy" width="660" height="1434"></figure><p class="cap">Giao diện sáng</p></div>
+          <div class="phone-box"><figure class="phone real"><img src="assets/xc/real/home-dark.jpg" alt="Màn hình chính giao diện tối" loading="lazy" width="660" height="1434"></figure><p class="cap">Giao diện tối</p></div>
+        </div>
+      </div>
+      <div class="copy rv">
+        <span class="kicker">Giao diện</span>
+        <h3>Sáng, tối và lời chào đúng tên bạn</h3>
+        <p>Giao diện đổi theo chế độ của điện thoại, hoặc chọn cố định trong Cài đặt. Tên gọi bạn đặt cũng được dùng trong lời chào và trong thông báo của xe.</p>
+      </div>
+    </div>
+    <div class="grid g4" style="margin-top:56px">
       <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></div><h3>Ra lệnh bằng Siri</h3><p>Nói “Turn on AC in XC Connect” để bật điều hòa. Mở app Phím tắt để xem mọi lệnh hoặc gán vào nút Tác vụ của iPhone.</p></div>
       <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0M17 8a3 3 0 010 6M21 20a5 5 0 00-4-4.900"/></svg></div><h3>Cho người nhà dùng chung</h3><p>Trên màn hình xe mở App điện thoại, bấm Ghép điện thoại. Người nhà quét mã bằng XC Connect, bạn bấm Đồng ý trên xe.</p></div>
-      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4.500V3M12 21v-1.500M4.500 12H3M21 12h-1.500M6.300 6.300L5.200 5.200M18.800 18.800l-1.100-1.100M6.300 17.700l-1.100 1.100M18.800 5.200l-1.100 1.100"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Giao diện sáng và tối</h3><p>Theo chế độ của điện thoại. Lời chào đúng tên bạn, đổi lại bất cứ lúc nào trong Cài đặt.</p></div>
-      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div><h3>Giới hạn sạc ngay trong app</h3><p>Đặt giới hạn sạc từ điện thoại và xem xe đang sạc tới đâu.</p></div>
       <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg></div><h3>Chỉ đường tới xe</h3><p>Trên iPhone chọn mở bằng Apple Maps hoặc Google Maps. Trên Android mở thẳng Google Maps.</p></div>
       <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg></div><h3>Xem thử không cần xe</h3><p>Chưa có xe ghép vẫn mở chế độ xem thử với xe mẫu để làm quen giao diện.</p></div>
     </div>
@@ -311,10 +320,13 @@
       <h2>Ghép một lần, dùng ở bất cứ đâu</h2>
       <p class="sub">App cần phần mềm Xe Chơi chạy trên màn hình xe, có bật tính năng “App điện thoại” và xe có kết nối internet (Wi‑Fi phát từ điện thoại là đủ).</p>
     </div>
-    <div class="grid g3">
+    <div class="row">
+      <div class="gfx rv phone-box"><figure class="phone real"><img src="assets/xc/real/pair.jpg" alt="Màn hình Ghép điện thoại với xe: ba bước, nút quét mã trên màn hình xe, dán mã, xem thử" loading="lazy" width="660" height="1434"></figure></div>
+      <div class="steps-col">
       <div class="card rv"><span class="step-n">BƯỚC 1</span><h3>Mở mã QR trên xe</h3><p>Trên màn hình xe, vào Tiện ích → App điện thoại → Ghép điện thoại.</p></div>
       <div class="card rv"><span class="step-n">BƯỚC 2</span><h3>Quét bằng XC Connect</h3><p>Mở app, quét mã QR. Xe xác nhận điện thoại của bạn, mỗi điện thoại ghép đều được xe duyệt.</p></div>
       <div class="card rv"><span class="step-n">BƯỚC 3</span><h3>Điều khiển từ xa</h3><p>Xong. Từ giờ xem và điều khiển xe ở bất cứ đâu có mạng.</p></div>
+      </div>
     </div>
     <div class="grid g3" style="margin-top:16px">
       <div class="card rv"><h3>Ghép an toàn</h3><p>Mỗi điện thoại ghép đều cần bạn bấm Đồng ý trên màn hình xe.</p></div>
