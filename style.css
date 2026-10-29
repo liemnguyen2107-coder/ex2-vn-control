@@ -554,3 +554,7 @@ button.pimg { border: 0; padding: 0; cursor: zoom-in; font: inherit; color: inhe
 .imgcol.narrow { max-width: 470px; margin: 0 auto; width: 100%; }
 .tag-demo.block { display: block; width: fit-content; margin: 10px auto 0; }
 .moi-card .ico { margin-bottom: 4px; }
+.wide-feature .copy p { max-width: 760px; }
+.wide-feature .ticks { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+.wide-feature .copy + .rv { margin-top: 28px; }
+@media (max-width: 720px) { .wide-feature .ticks { grid-template-columns: 1fr; } }
