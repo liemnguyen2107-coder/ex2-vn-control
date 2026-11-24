@@ -1,4 +1,4 @@
-# Trang giới thiệu EX2 VN Control
+# Trang giới thiệu EX2 Control
 
 Trang tĩnh (HTML/CSS/JS thuần, không cần build) để đăng lên GitHub Pages.
 
