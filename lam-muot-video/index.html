@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="robots" content="noindex">
+<title>Làm mượt video</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #111; color: #eee; padding: 24px 18px 40px;
+  }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  p { color: #aaa; font-size: 15px; line-height: 1.45; margin: 0 0 18px; }
+  .pick {
+    display: block; width: 100%; padding: 18px; margin: 0 0 12px;
+    background: #1c1c1c; color: #fff; border: 1px dashed #555; border-radius: 12px;
+    font-size: 17px;
+  }
+  button {
+    width: 100%; padding: 16px; font-size: 20px; font-weight: 700; margin: 0 0 12px;
+    border: 0; border-radius: 12px; background: #3ea6ff; color: #111;
+  }
+  button.second { background: #2a2a2a; color: #eee; font-weight: 600; font-size: 17px; }
+  button:disabled { opacity: .45; }
+  #status { margin: 4px 0 16px; font-size: 16px; white-space: pre-wrap; min-height: 24px; line-height: 1.45; }
+  .ok { color: #6f6; }
+  .err { color: #f88; }
+  .warn { color: #fc6; }
+  progress { width: 100%; height: 10px; margin: 0 0 14px; }
+  [hidden] { display: none !important; }
+</style>
+<body>
+<h1>Làm mượt video cho xe</h1>
+<p>Trang này đổi video sang kiểu xe phát mượt (tối đa 1080p, không tiếng). Video được xử lý ngay trên điện thoại, không tải lên mạng. Giữ trang này mở tới khi xong.</p>
+<input class="pick" id="f" type="file" accept="video/*,.mp4,.mov,.m4v,.mkv,.webm,.3gp" hidden>
+<div id="status">Đang chờ video từ trang gửi của xe…</div>
+<progress id="bar" max="100" value="0" hidden></progress>
+<button id="go" type="button" hidden>Làm mượt video</button>
+<button id="back" type="button" hidden>Gửi sang xe</button>
+<button id="save" type="button" class="second" hidden>Lưu video về máy</button>
+<button id="cancel" type="button" class="second" hidden>Dừng</button>
+<script type="module">
+import {
+  Input, ALL_FORMATS, BlobSource, Output, Mp4OutputFormat, BufferTarget,
+  Conversion, EncodedPacketSink, canEncodeVideo
+} from './mediabunny.min.mjs';
+
+const $ = (id) => document.getElementById(id);
+const f = $('f'), statusEl = $('status'), bar = $('bar');
+const goBtn = $('go'), backBtn = $('back'), saveBtn = $('save'), cancelBtn = $('cancel');
+
+// Xe phát mượt tới 1080p (đo trên xe: 4K không kịp nhịp, cả H.264 lẫn H.265).
+const MAX_LONG = 1920, MAX_SHORT = 1080;
+const MAX_INPUT = 1024 * 1024 * 1024;
+
+function setStatus(t, cls) { statusEl.textContent = t; statusEl.className = cls || ''; }
+function mb(n) { return (n / 1048576).toFixed(1).replace('.', ',') + ' MB'; }
+function show(el, on) { el.hidden = !on; }
+
+/** Địa chỉ trang gửi của xe, lấy từ phần sau dấu # (không gửi lên máy chủ). Chỉ nhận http tới địa chỉ mạng nội bộ. */
+function carOrigin() {
+  const m = /[#&]xe=([^&]+)/.exec(location.hash);
+  if (!m) return null;
+  try {
+    const u = new URL(decodeURIComponent(m[1]));
+    const h = u.hostname;
+    const local = /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|169\.254\.)/.test(h) || h === 'localhost' || h === '127.0.0.1';
+    return u.protocol === 'http:' && local ? u.origin : null;
+  } catch (e) { return null; }
+}
+const CAR = carOrigin();
+const opener = (() => { try { return window.opener && !window.opener.closed ? window.opener : null; } catch (e) { return null; } })();
+
+let srcFile = null, outBlob = null, outName = 'video-muot.mp4', conversion = null, receiver = null;
+
+/** Thứ tự phát của các gói có khác thứ tự giải mã không (= có khung B). */
+async function hasReordering(track, limit) {
+  const sink = new EncodedPacketSink(track);
+  let last = -Infinity, n = 0;
+  for await (const p of sink.packets(undefined, undefined, { metadataOnly: true })) {
+    if (p.timestamp < last) return true;
+    last = p.timestamp;
+    if (++n >= limit) break;
+  }
+  return false;
+}
+
+function targetSize(w, h) {
+  const long = Math.max(w, h), short = Math.min(w, h);
+  const k = Math.min(1, MAX_LONG / long, MAX_SHORT / short);
+  const even = (v) => Math.max(2, Math.round(v * k / 2) * 2);
+  return { width: even(w), height: even(h), scaled: k < 1 };
+}
+
+async function inspect(file) {
+  const input = new Input({ source: new BlobSource(file), formats: ALL_FORMATS });
+  const track = await input.getPrimaryVideoTrack();
+  if (!track) throw new Error('File này không có hình.');
+  const info = {
+    input, track, codec: track.codec, w: track.displayWidth, h: track.displayHeight,
+    duration: await input.computeDuration(),
+    reorder: await hasReordering(track, 240)
+  };
+  const stats = await track.computePacketStats(120);
+  info.fps = stats.averagePacketRate || 30;
+  return info;
+}
+
+async function pickCodec(size, bitrate) {
+  // Ưu tiên H.264: mọi bộ mã hóa của trình duyệt đều ra H.264 không khung B, đúng kiểu xe phát mượt.
+  for (const codec of ['avc', 'hevc']) {
+    try { if (await canEncodeVideo(codec, { width: size.width, height: size.height, bitrate })) return codec; } catch (e) {}
+  }
+  return null;
+}
+
+async function onFile(file) {
+  srcFile = file; outBlob = null;
+  show(backBtn, false); show(saveBtn, false); show(goBtn, false);
+  if (!('VideoEncoder' in window)) {
+    setStatus('Trình duyệt này không đổi được video.\niPhone: dùng Safari (iOS 16.4 trở lên). Android: dùng Chrome bản mới.', 'err');
+    return;
+  }
+  if (file.size > MAX_INPUT) { setStatus('Video nặng quá 1 GB, cắt ngắn rồi chọn lại.', 'err'); return; }
+  setStatus('Đang xem ' + (file.name || 'video') + ' (' + mb(file.size) + ')…');
+  try {
+    const info = await inspect(file);
+    const size = targetSize(info.w, info.h);
+    const why = [];
+    if (info.codec === 'avc' && info.reorder) why.push('kiểu nén làm xe phát giật');
+    if (size.scaled) why.push(info.w + '×' + info.h + ' lớn hơn 1080p');
+    onFile.info = info; onFile.size = size;
+    setStatus((file.name || 'video') + ' · ' + mb(file.size) + ' · ' + info.w + '×' + info.h + ' · ' + Math.round(info.duration) + ' giây\n' +
+      (why.length ? 'Cần làm mượt: ' + why.join(', ') + '.'
+        : 'Video này xe phát mượt sẵn, không cần đổi.' + (CAR ? ' Quay lại trang gửi của xe và bấm Gửi.' : ' Gửi thẳng lên xe bằng mã QR như thường.')),
+      why.length ? 'warn' : 'ok');
+    show(goBtn, why.length > 0);
+    show(f, !why.length);
+    if (why.length && onFile.auto) { onFile.auto = false; convert(); }
+  } catch (e) {
+    setStatus('Không đọc được video này: ' + (e && e.message || e) + '\nThử file MP4 hoặc MOV khác.', 'err');
+    show(f, true);
+  }
+}
+
+async function convert() {
+  const info = onFile.info, size = onFile.size;
+  if (!info) return;
+  show(goBtn, false); show(f, false); show(cancelBtn, true);
+  bar.hidden = false; bar.value = 0;
+  const fps = Math.min(60, Math.max(1, Math.round(info.fps)));
+  const bitrate = Math.round(Math.max(2.5e6, 8e6 * (size.width * size.height) / (1920 * 1080)) * (fps > 40 ? 1.4 : 1));
+  try {
+    const codec = await pickCodec(size, bitrate);
+    if (!codec) throw new Error('Điện thoại này không có bộ mã hóa video cho trình duyệt.');
+    const output = new Output({ format: new Mp4OutputFormat({ fastStart: 'in-memory' }), target: new BufferTarget() });
+    conversion = await Conversion.init({
+      input: info.input, output, tracks: 'primary', showWarnings: false,
+      video: {
+        codec, width: size.width, height: size.height, fit: 'fill', bitrate,
+        frameRate: fps > 40 ? fps : undefined, keyFrameInterval: 2,
+        forceTranscode: true, allowTransformationMetadata: false
+      },
+      audio: { discard: true }
+    });
+    if (!conversion.isValid) {
+      const r = conversion.discardedTracks.map((d) => d.reason).join(', ');
+      throw new Error('Không đổi được video này (' + (r || 'không rõ lý do') + ').');
+    }
+    const t0 = performance.now();
+    conversion.onProgress = (p) => {
+      bar.value = Math.round(p * 100);
+      setStatus('Đang làm mượt video… ' + Math.round(p * 100) + '%\nGiữ trang này mở và màn hình sáng.');
+    };
+    setStatus('Đang làm mượt video… 0%');
+    await conversion.execute();
+    conversion = null;
+    outBlob = new Blob([output.target.buffer], { type: 'video/mp4' });
+    outName = (srcFile.name || 'video').replace(/\.[^.]*$/, '') + '-muot.mp4';
+    // Tự kiểm: file ra không được có khung B (nếu có thì xe vẫn giật).
+    const check = new Input({ source: new BlobSource(outBlob), formats: ALL_FORMATS });
+    const ct = await check.getPrimaryVideoTrack();
+    const bad = ct && ct.codec === 'avc' && await hasReordering(ct, 240);
+    const secs = Math.round((performance.now() - t0) / 1000);
+    show(cancelBtn, false); bar.hidden = true;
+    setStatus('Xong sau ' + secs + ' giây: ' + size.width + '×' + size.height + ' · ' + mb(outBlob.size) +
+      (bad ? '\nLưu ý: điện thoại này vẫn tạo ra kiểu nén xe phát giật. Thử trình duyệt hoặc máy khác.' : ''), bad ? 'warn' : 'ok');
+    show(saveBtn, true);
+    if (CAR) { show(backBtn, true); if (opener && !bad) deliver(); }
+  } catch (e) {
+    conversion = null;
+    show(cancelBtn, false); bar.hidden = true; show(goBtn, true);
+    if (e && e.name === 'ConversionCanceledError') { setStatus('Đã dừng.'); return; }
+    setStatus('Lỗi khi làm mượt: ' + (e && e.message || e), 'err');
+  }
+}
+
+/** Chuyển file đã đổi cho trang gửi của xe (trang http), trang đó mới gửi được vào xe. */
+function deliver() {
+  if (!outBlob || !CAR) return;
+  const msg = { t: 'video', blob: outBlob, name: outName };
+  if (opener) {
+    let acked = false;
+    const onAck = (ev) => {
+      if (ev.origin !== CAR || !ev.data || ev.data.t !== 'ack') return;
+      acked = true;
+      window.removeEventListener('message', onAck);
+      setStatus('Đã chuyển video cho trang gửi của xe. Đang quay lại…', 'ok');
+      setTimeout(() => { window.close(); setStatus('Đã chuyển video. Quay lại tab "Hình nền video" để xem tiến độ gửi.', 'ok'); }, 500);
+    };
+    window.addEventListener('message', onAck);
+    try { opener.postMessage(msg, CAR); } catch (e) {}
+    setTimeout(() => {
+      if (acked) return;
+      // Trang gửi đang ở tab nền nên chưa trả lời; tin nhắn vẫn nằm chờ ở đó.
+      setStatus('Video đã sẵn sàng. Bấm "Gửi sang xe" để quay lại trang gửi.', 'ok');
+    }, 2500);
+    return;
+  }
+  // Không còn trang gửi phía trước: mở lại trang của xe trong tab mới rồi đưa file cho nó.
+  receiver = window.open(CAR + '/#nhan', '_blank');
+  if (!receiver) setStatus('Trình duyệt chặn mở tab mới. Bấm "Lưu video về máy", rồi mở lại mã QR trên xe và chọn file vừa lưu.', 'warn');
+}
+
+window.addEventListener('message', (ev) => {
+  if (!CAR || ev.origin !== CAR || !ev.data) return;
+  if (ev.data.t === 'file' && ev.data.file && !srcFile) { onFile.auto = true; onFile(ev.data.file); }
+  if (ev.data.t === 'ready-recv' && outBlob && ev.source) {
+    ev.source.postMessage({ t: 'video', blob: outBlob, name: outName }, CAR);
+    setStatus('Đã chuyển video sang tab của xe.', 'ok');
+  }
+});
+
+f.onchange = () => { const file = f.files && f.files[0]; if (file) onFile(file); };
+goBtn.onclick = convert;
+cancelBtn.onclick = () => { if (conversion) conversion.cancel(); };
+backBtn.onclick = () => {
+  if (opener) {
+    try { opener.postMessage({ t: 'video', blob: outBlob, name: outName }, CAR); } catch (e) {}
+    window.close();
+    setTimeout(() => setStatus('Quay lại tab "Hình nền video" để xem tiến độ gửi.', 'ok'), 400);
+  } else deliver();
+};
+saveBtn.onclick = async () => {
+  const file = new File([outBlob], outName, { type: 'video/mp4' });
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file] }); return; }
+  } catch (e) { if (e && e.name === 'AbortError') return; }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(outBlob); a.download = outName;
+  document.body.appendChild(a); a.click(); a.remove();
+};
+
+// Thử nghiệm: #thu=<đường dẫn tương đối, cùng máy chủ> tự nạp file đó và đổi ngay.
+const thu = /[#&]thu=([\w./-]+)/.exec(location.hash);
+if (thu && !/^\/|:|\.\./.test(thu[1])) {
+  fetch(thu[1]).then((r) => r.blob()).then((b) => { onFile.auto = true; onFile(new File([b], thu[1].split('/').pop(), { type: b.type })); })
+    .catch((e) => setStatus('Không nạp được file thử: ' + e, 'err'));
+}
+// Xin file từ trang gửi của xe; không có trả lời thì để người dùng tự chọn.
+if (opener && CAR) { try { opener.postMessage({ t: 'ready' }, CAR); } catch (e) {} }
+setTimeout(() => {
+  if (srcFile || thu) return;
+  show(f, true);
+  setStatus(CAR ? 'Chọn video cần làm mượt.' : 'Chọn video cần làm mượt. Xong thì lưu về máy rồi gửi lên xe bằng mã QR như thường.');
+}, opener && CAR ? 1500 : 0);
+</script>
+</body>
+</html>
